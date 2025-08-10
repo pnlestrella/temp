@@ -19,7 +19,7 @@ export const loginWithEmailAndPass = async (email:string, password:string) => {
 
 export const signoutUser = async () => {
     try{
-        const signout = signOut(auth);
+        await signOut(auth);
     }catch(err){
         throw err
     }
@@ -32,10 +32,7 @@ export const registerJobSeeker = async (email:string, password:string) => {
         const jobSeeker = await createUserWithEmailAndPassword(auth,email,password)
         await sendEmailVerification(jobSeeker.user)
         console.log('Confirmation sent')
-
-      
-
-        // return(jobSeeker)
+        return(jobSeeker)
     }catch(err){
         throw err
     }

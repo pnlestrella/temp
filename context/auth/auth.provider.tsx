@@ -8,8 +8,10 @@ import {auth} from '../../firebase/firebaseSDK'
 
 export const AuthProvider = ({children}: {children:ReactNode}) => {
     const [user,setUser] = useState<AuthTypes['user'] | null>(null);
-    const [isLoading, setIsLoading] = useState<AuthTypes['isLoading']>(true)
+    const [isLoading, setIsLoading] = useState<AuthTypes['isLoading']>(false)
+    const [userType , setUserType] = useState<AuthTypes['userType']>("")
 
+    console.log("Called", userType)
     //For persistency of the USER
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user)=> {
@@ -55,7 +57,7 @@ export const AuthProvider = ({children}: {children:ReactNode}) => {
         }
     }
 
-    const value = useMemo<AuthTypes>(() => ({user, logout, login, registerJSeekers, isLoading, setIsLoading}) , [user]);
+    const value = useMemo<AuthTypes>(() => ({user, logout, login, registerJSeekers, isLoading, setIsLoading, setUserType, userType}) , [user,userType,isLoading]);
 
     return(
         <AuthContext.Provider value={value}>

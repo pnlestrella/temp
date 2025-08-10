@@ -1,9 +1,10 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useAuth } from "context/auth/auth.hook";
-import { HomeScreen } from "screens/jobseeker/HomeScreen";
+import { HomeScreen } from "screens/common/HomeScreen";
 import { LoginScreen } from "screens/common/LoginScreen";
-import { RegisterScreenJS } from "screens/common/RegisterScreenJS";
+import { RegisterScreen } from "screens/common/RegisterScreen";
+import {AccountType} from "screens/common/AccountType"
 
 const Stack = createNativeStackNavigator();
 
@@ -14,14 +15,19 @@ export  function StackNavigator(){
     return(
         //stacks for routing
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={!user? "login" : "home" }>
+            <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName={!user? "login" : "home" }>
                 {!user?(
+                    //users not logged in
                     <>
                         <Stack.Screen name="login" component={LoginScreen} />
-                        <Stack.Screen name="register" component={RegisterScreenJS}/>
+                        <Stack.Screen name="accountType" component={AccountType} />
+                        <Stack.Screen name="register" component={RegisterScreen}/>
                     </>
                 ):(
-                    <Stack.Screen name="home" component={HomeScreen} options={{headerShown:false}}/>
+                    //Logged in users
+                    <>
+                      <Stack.Screen name="home" component={HomeScreen} options={{headerShown:false}}/>
+                    </>
                 )
                 }
             </Stack.Navigator>

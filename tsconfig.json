@@ -3,11 +3,29 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "react-jsx",
-
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      
-    }
-  }
+      "~/*": ["./*"],
+      "@assets/*": ["./assets/*"],
+      "@/*": ["./src/*"]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types",
+      "./nativewind-env.d.ts",
+      "./app-env.d.ts"
+    ]
+  },
+  "include": [
+    "types/**/*",
+    "custom.d.ts",
+    "app-env.d.ts",
+    "nativewind-env.d.ts",
+    "App.tsx",
+    "src/**/*",
+    "assets/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

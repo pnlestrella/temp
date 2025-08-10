@@ -6,6 +6,10 @@ export type AuthTypes = {
     logout: () => Promise<void>;
     isLoading: boolean;
     setIsLoading: (value: boolean) => void
+    //usertypes
+    userType: 'jobseeker' | 'employer' | '';
+    setUserType: (value: 'jobseeker' | 'employer' | '') => void;
+
     //Job Seekers
     registerJSeekers: (email:string,password:string) => Promise<void>;
 
