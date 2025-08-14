@@ -8,6 +8,7 @@ export const RegisterScreen = () => {
   const {accountType}= useAuth();
   console.log(accountType)
 
+
   if(accountType === 'jobseeker'){
     return <JSRegisterScreen/>
   }else{

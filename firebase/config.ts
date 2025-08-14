@@ -1,18 +1,17 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getAuth} from "firebase/auth"
 import { getReactNativePersistence, initializeAuth } from 'firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import Constants from 'expo-constants'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC-jdwgJsZJgYMg57pjIYL0ir2eOZ13gpQ",
-  authDomain: "test-90782.firebaseapp.com",
-  projectId: "test-90782",
-  storageBucket: "test-90782.firebasestorage.app",
-  messagingSenderId: "881546491561",
-  appId: "1:881546491561:web:a92421a2225cd9f2729bb8",
-  measurementId: "G-0DQ0G4BHYK"
+  apiKey: Constants.expoConfig?.extra?.FIREBASE_API_KEY,
+  authDomain: Constants.expoConfig?.extra?.FIREBASE_AUTH_DOMAIN,
+  projectId: Constants.expoConfig?.extra?.FIREBASE_PROJECT_ID,
+  storageBucket: Constants.expoConfig?.extra?.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: Constants.expoConfig?.extra?.FIREBASE_MESSAGING_SENDER_ID,
+  appId: Constants.expoConfig?.extra?.FIREBASE_APP_ID,
+  measurementId: Constants.expoConfig?.extra?.FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

@@ -15,7 +15,7 @@ export const AuthProvider = ({children}:{children:ReactNode}) => {
             setUser(firebaseUser);
         })
         return unsubscribe
-    },[])
+    },[user])
 
 
     async function login(email:string, password:string){
