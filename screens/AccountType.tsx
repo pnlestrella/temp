@@ -13,15 +13,15 @@ export const AccountType = () => {
     //navigation
     const navigation = useNavigation<NavigationProp>()
 
-    const {setAccountType} = useAuth()
+    const {setUserType} = useAuth()
 
     function handleJobSeeker(){
-        setAccountType('jobseeker')
+        setUserType('jobseeker')
         navigation.navigate('register')
     }
 
     function handleEmployer(){
-        setAccountType('employer')
+        setUserType('employer')
         navigation.navigate('register')
     }
 

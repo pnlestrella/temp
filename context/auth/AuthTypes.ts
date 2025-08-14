@@ -2,10 +2,9 @@ import {User} from 'firebase/auth'
 
 export type AuthTypes ={
     user: User| null;
-    accountType: string;
+    userType: string;
+    loading: boolean
     login: (email:string, password:string) => Promise<void>;
-    registerJobseeker: (email:string, password:string) => Promise<void>;
-    registerEmployer: (email:string, password:string) => Promise<void>;
-    setAccountType: (value: string) => void
-
+    setUserType: (value: string) => void
+    setLoading: (value: boolean) => void
 }

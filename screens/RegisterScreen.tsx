@@ -5,11 +5,11 @@ import { JSRegisterScreen } from './jobseekers/JSRegisterscreen';
 
 export const RegisterScreen = () => {
   //Conditional Rendering
-  const {accountType}= useAuth();
-  console.log(accountType)
+  const {userType}= useAuth();
+  console.log(userType)
 
 
-  if(accountType === 'jobseeker'){
+  if(userType === 'jobseeker'){
     return <JSRegisterScreen/>
   }else{
     return <EmployerRegisterScreen/>

@@ -14,9 +14,7 @@ export const userLogin = async (email:string, password:string) => {
 export const jobseekerRegister = async (email: string, password: string) => {
     try{
         const register = await createUserWithEmailAndPassword(auth, email, password);
-        console.log(register, '-------------------');
-
-        return({success:true, message:"Successfully created an account"})
+        return(register)
     }catch(err){
         throw err;
     }
