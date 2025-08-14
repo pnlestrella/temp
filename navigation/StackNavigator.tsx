@@ -4,6 +4,7 @@ import { RegisterScreen } from "screens/RegisterScreen";
 import { LoginScreen } from "screens/LoginScreen";
 import { RootStackParamList } from "./types/RootStackParamList";
 import { useAuth } from "context/auth/AuthHook";
+import { AccountType } from "screens/AccountType";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -17,13 +18,14 @@ export default function StackNavigator(){
 
 
     return(
-        <Stack.Navigator initialRouteName={user ? "home" : "login"}>
+        <Stack.Navigator screenOptions={{headerShown:false}}  initialRouteName={user ? "home" : "login"}>
             {user? (
-            <Stack.Screen name="home" component={Home} options={{headerShown:false}}/>
+            <Stack.Screen name="home" component={Home} />
 
             ): (
                 <>
-                <Stack.Screen name="login" component={LoginScreen} options={{headerShown:false}}/>
+                <Stack.Screen name="login" component={LoginScreen} />
+                <Stack.Screen name='accountType' component={AccountType} />
                 <Stack.Screen name="register" component={RegisterScreen} />
                 </>
             )}

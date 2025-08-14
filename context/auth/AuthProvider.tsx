@@ -7,7 +7,7 @@ import { auth } from '../../firebase/config';
 
 export const AuthProvider = ({children}:{children:ReactNode}) => {
     const [user,setUser] = useState<AuthTypes['user']|null>(null)
-    const [accountType, setAccountType] = useState('')
+    const [accountType, setAccountType] = useState<AuthTypes['accountType']>('')
 
 
     useEffect(() => {
@@ -33,6 +33,18 @@ export const AuthProvider = ({children}:{children:ReactNode}) => {
     async function registerJobseeker(email: string, password:string){
         try{
            const register = await jobseekerRegister(email, password)
+           //add mongodblater
+           alert('Successfully registered')
+        }catch(err){
+            console.log(err)
+            return;
+        }
+    }
+    //registration for EMPLOYER
+     async function registerEmployer(email: string, password:string){
+        try{
+           const register = await jobseekerRegister(email, password)
+           //add mongodb later
            alert('Successfully registered')
         }catch(err){
             console.log(err)
@@ -41,7 +53,7 @@ export const AuthProvider = ({children}:{children:ReactNode}) => {
     }
 
 
-    const value = useMemo(() => ({user, login,registerJobseeker}),[user])
+    const value = useMemo(() => ({user,accountType,login,registerJobseeker, setAccountType, registerEmployer}),[user,accountType])
     return(
         <AuthContext value={value}> 
             {children}

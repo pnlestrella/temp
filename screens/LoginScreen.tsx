@@ -47,11 +47,10 @@ export const LoginScreen = () => {
             alert(err.code)
             console.log(err)
           }
-          
         }}
       />
       <Button title={"Register here"} onPress={() => {
-        navigation.navigate('register')
+        navigation.navigate('accountType')
       }} />
 
     </SafeAreaView>

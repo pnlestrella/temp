@@ -1,6 +1,9 @@
 export type RootStackParamList = {
-    login: undefined,
-    home: undefined,
-    register: undefined
+    //if Logged in
+    home: undefined;
+    //if not logged in
+    login: undefined;
+    accountType:undefined;
+    register: undefined;
 
 }
