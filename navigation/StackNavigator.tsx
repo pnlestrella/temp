@@ -1,31 +1,34 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useAuth } from "context/auth/auth.hook";
-import { HomeScreen } from "screens/jobseeker/HomeScreen";
-import { LoginScreen } from "screens/common/LoginScreen";
-import { RegisterScreenJS } from "screens/common/RegisterScreenJS";
+import { Home } from "screens/Home";
+import { RegisterScreen } from "screens/RegisterScreen";
+import { LoginScreen } from "screens/LoginScreen";
+import { RootStackParamList } from "./types/RootStackParamList";
+import { useAuth } from "context/auth/AuthHook";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export  function StackNavigator(){
-    //import useContext- useAuth for general calling
+
+export default function StackNavigator(){
     const {user} = useAuth()
 
+    console.log(user)
+
+
+
+
     return(
-        //stacks for routing
-        <NavigationContainer>
-            <Stack.Navigator initialRouteName={!user? "login" : "home" }>
-                {!user?(
-                    <>
-                        <Stack.Screen name="login" component={LoginScreen} />
-                        <Stack.Screen name="register" component={RegisterScreenJS}/>
-                    </>
-                ):(
-                    <Stack.Screen name="home" component={HomeScreen} options={{headerShown:false}}/>
-                )
-                }
-            </Stack.Navigator>
-        </NavigationContainer>
-   
+        <Stack.Navigator initialRouteName={user ? "home" : "login"}>
+            {user? (
+            <Stack.Screen name="home" component={Home} options={{headerShown:false}}/>
+
+            ): (
+                <>
+                <Stack.Screen name="login" component={LoginScreen} options={{headerShown:false}}/>
+                <Stack.Screen name="register" component={RegisterScreen} />
+                </>
+            )}
+
+
+        </Stack.Navigator>
     )
 }

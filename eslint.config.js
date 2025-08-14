@@ -5,7 +5,7 @@ const expoConfig = require('eslint-config-expo/flat');
 module.exports = defineConfig([
   expoConfig,
   {
-    ignores: ['dist/*', 'firebase/auth/react-native'],
+    ignores: ['dist/*'],
   },
   {
     rules: {
